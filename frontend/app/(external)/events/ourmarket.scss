@@ -1,0 +1,31 @@
+.banner-background {
+    background-image: url('../../../public/images/blacknav.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.main-section-ourmarket {
+    background-image: url('../../../public/images/greenray.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.titlebar {
+    @apply mb-4;
+    background-image: linear-gradient(to right, rgba(0, 128, 0, 0), green, green, rgba(0, 128, 0, 0));
+
+    h1 {
+        @apply lg:text-5xl md:text-3xl sm:text-2xl text-xl uppercase text-center py-2;
+    }
+}
+
+.mtcard {
+    @apply p-4 text-center h-full rounded-sm;
+    background-image: linear-gradient(to right, rgba(0, 128, 0, 0.155), rgba(41, 128, 0, 0.114));
+    border-left: 8px solid rgb(0, 198, 0);
+}
+
+.tv-background2 {
+    @apply xl:h-[530px] lg:h-[400px] md:h-[350px] h-[250px] lg:bg-fixed bg-scroll bg-cover;
+    background-image: url('../../../public/images/gallery-images/amphitheatre.webp');
+}

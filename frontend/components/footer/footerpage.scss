@@ -1,0 +1,10 @@
+.color-divider {
+    @apply w-full h-2 my-2;
+    background-color: rgb(0, 239, 0);
+}
+
+.sidecard {
+    @apply w-full pl-3;
+    border-left: 5px solid;
+    border-color: rgb(0, 239, 0);
+}

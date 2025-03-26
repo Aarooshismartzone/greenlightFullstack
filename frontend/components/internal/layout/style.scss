@@ -1,0 +1,11 @@
+.menu-buttons-black {
+    @apply flex flex-row px-4 py-2 my-1 w-full bg-cyan-800 hover:bg-cyan-700 duration-200;
+}
+
+.menu-buttons-white {
+    @apply flex flex-row px-4 py-2 my-1 w-full bg-cyan-300 hover:bg-cyan-400 duration-200;
+}
+
+.selected-menu-item, .selected-menu-item:hover {
+    @apply font-bold bg-green-500;
+}

@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.black-background {
+    background-image: url('../public/images/blacknav.webp');
+    background-size: cover;
+    background-position: center;
+
+    .b-overlay {
+        @apply lg:h-[220px] md:h-[180px] h-[100px];
+        background-color: rgba(0, 0, 0, 0.541);
+    }
+}
+
+
+.white-background {
+    background-image: url('../public/images/whitenav.webp');
+    background-size: cover;
+    background-position: center;
+
+    .w-overlay {
+        @apply lg:h-[220px] md:h-[180px] h-[100px];
+        background-color: rgba(255, 255, 255, 0.541);
+    }
+}
+
+.color-divider-right {
+    @apply w-full h-2;
+    background-image: linear-gradient(to right, white, rgb(0, 239, 0));
+}
+
+.color-divider-left {
+    @apply w-full h-2;
+    background-image: linear-gradient(to right, rgb(0, 239, 0), white);
+}

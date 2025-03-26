@@ -1,0 +1,59 @@
+.main-section-homepage {
+    background-image: url('../../public/images/greengradient.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.titlebar {
+    @apply mb-4;
+    background-image: linear-gradient(to right, rgba(0, 128, 0, 0), green, green, rgba(0, 128, 0, 0));
+
+    h1 {
+        @apply lg:text-5xl md:text-3xl sm:text-2xl text-xl uppercase text-center py-2;
+    }
+}
+
+.tv-background {
+    @apply xl:h-[530px] lg:h-[400px] md:h-[350px] h-[250px] lg:bg-fixed bg-scroll bg-cover;
+    background-image: url('../../public/images/football.webp');
+}
+
+// SWIPER
+
+.swiperContainer {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+
+    @media (min-width: 640px) {
+        width: 80%; // Tablet
+    }
+
+    @media (min-width: 1024px) {
+        width: 70%; // Desktop
+    }
+}
+
+.swiper-slide img {
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+}
+
+.swiper-slide-active img {
+    transform: scale(1.1);
+}
+
+.swiper-slide-prev img,
+.swiper-slide-next img {
+    transform: scale(0.8);
+    opacity: 0.7;
+}
+
+/* Adjust navigation button sizes for mobile */
+.swiper-button-prev,
+.swiper-button-next {
+    @media (max-width: 640px) {
+        width: 20px;
+        height: 20px;
+    }
+}

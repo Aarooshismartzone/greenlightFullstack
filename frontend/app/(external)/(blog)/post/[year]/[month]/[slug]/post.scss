@@ -1,0 +1,16 @@
+.banner-background {
+    background-image: url('../../../../../../../public/images/blacknav.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.main-section-post {
+    //background-image: url('../../../../../../../public/images/greenray.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.post-image {
+    @apply w-96 max-w-full h-auto mr-4 mb-2;
+    float: left;
+}

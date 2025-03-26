@@ -1,0 +1,38 @@
+.banner-background {
+    background-image: url('../../../../public/images/blacknav.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.main-section-blog {
+    background-image: url('../../../../public/images/pattern.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.blog-card {
+    @apply w-full h-full relative overflow-hidden rounded-none shadow-lg;
+    aspect-ratio: 3/2;
+}
+
+.blog-card-cover {
+    @apply w-full h-full bg-center relative;
+    background-size: 100%;
+    transition-duration: 1s;
+}
+
+.blog-card-cover:hover {
+    background-size: 120%;
+}
+
+.blog-card-content {
+    @apply absolute bottom-0 w-full p-1 text-white;
+    background-color: rgba(0, 0, 0, 0.795);
+}
+
+.latest-blog-card {
+    @apply absolute top-0 left-0 text-white text-lg uppercase font-bold pl-2 pr-10 py-1;
+    letter-spacing: 6px;
+    background-image: linear-gradient(to right, rgb(2, 51, 2), rgba(2, 51, 2, 0));
+}
