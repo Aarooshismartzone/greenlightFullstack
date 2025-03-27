@@ -4,6 +4,8 @@ import { Button } from "@heroui/button";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { backendUrl } from "@/components/primitives";
 
 interface ContactInterface {
   _id: string;
@@ -16,6 +18,8 @@ interface ContactInterface {
 
 export default function ViewIndividualContact({ params }: { params: { id: string } }) {
   const { theme } = useTheme();
+  const router = useRouter();
+  const [csrfToken, setCsrfToken] = useState<string>("");
   const [isNightMode, setIsNightMode] = useState<boolean>(false);
   const [contact, setContact] = useState<ContactInterface | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -28,7 +32,7 @@ export default function ViewIndividualContact({ params }: { params: { id: string
   useEffect(() => {
     const fetchContactDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8081/api/backend/check-contact-form/${params.id}`, {
+        const response = await fetch(`${backendUrl}/api/backend/check-contact-form/${params.id}`, {
           credentials: "include",
         });
         if (!response.ok) {
@@ -47,6 +51,48 @@ export default function ViewIndividualContact({ params }: { params: { id: string
 
     fetchContactDetails();
   }, [params.id]);
+
+  useEffect(() => {
+    const fetchCsrfToken = async () => {
+      try {
+        const response = await fetch(`${backendUrl}/api/csrf-token`, {
+          credentials: "include",
+        });
+        const data = await response.json();
+        setCsrfToken(data.csrfToken);
+      } catch (error) {
+        console.error("Failed to fetch CSRF token:", error);
+      }
+    };
+    fetchCsrfToken();
+  }, []);
+
+  const handleDelete = async () => {
+    if (!contact) return;
+
+    const confirmDelete = window.confirm("Are you sure you want to delete this contact?");
+    if (!confirmDelete) return;
+
+    try {
+      const response = await fetch(`${backendUrl}/api/backend/delete-contact/${params.id}`, {
+        method: "DELETE",
+        headers: {
+          "X-CSRF-Token": csrfToken,
+        },
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to delete contact. Status: ${response.status}`);
+      }
+
+      alert("Contact deleted successfully");
+      router.push("/dashboard/view-contact-form"); // Redirect to contacts list after deletion
+    } catch (error) {
+      console.error("Error deleting contact:", error);
+      alert("Failed to delete contact.");
+    }
+  };
 
   if (loading) {
     return <p>Loading contact details...</p>;
@@ -74,6 +120,7 @@ export default function ViewIndividualContact({ params }: { params: { id: string
           <Link href={`mailto:${contact.email}`}>
             <Button>Send an email</Button>
           </Link>
+          <Button className="ml-4 bg-red-500 text-white" onPress={handleDelete}>Delete Contact</Button>
         </div>
       ) : (
         <p>No contact details found.</p>

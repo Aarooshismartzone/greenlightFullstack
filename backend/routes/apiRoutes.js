@@ -3,7 +3,7 @@ const multer = require("multer");
 const router = express.Router();
 const galleryRoutes = require("./galleryRoutes");
 
-const { submitContactForm, checkContactForm, checkIndividualContact } = require('../controllers/contactFormController');
+const { submitContactForm, checkContactForm, checkIndividualContact, deleteContact } = require('../controllers/contactFormController');
 const { register, login, verifyAuth } = require('../controllers/authController');
 const blogController = require('../controllers/blogController');
 
@@ -41,6 +41,8 @@ router.post('/contact-form', submitContactForm);
 router.get('/backend/check-contact-form', checkContactForm);
 //route for checking individual data
 router.get('/backend/check-contact-form/:id', checkIndividualContact);
+router.delete('/backend/delete-contact/:id', deleteContact);
+
 router.use("/gallery", galleryRoutes);
 
 // Blog routes
