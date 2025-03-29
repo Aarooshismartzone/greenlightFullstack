@@ -19,7 +19,7 @@ export default function Sidebar() {
   return (
     <>
       <div className={`min-h-screen px-4 ${!isNightMode ? 'bg-[#1a2c23]' : 'bg-[#80d7ab]'}`}>
-        <div className='text-3xl pt-4'>Greenlight XR</div>
+        <div className='text-3xl pt-4'>GreenLight XR</div>
         {siteConfig.navMenuItems.map((item, index) => {
           const Icon = item.icon; //Icon extracted          
           return (

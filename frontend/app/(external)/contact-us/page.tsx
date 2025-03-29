@@ -61,7 +61,7 @@ export default function ContactPage() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8081/api/contact-form", {
+      const response = await fetch(`${backendUrl}/api/contact-form`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

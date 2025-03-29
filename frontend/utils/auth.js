@@ -1,5 +1,7 @@
+import { backendUrl } from "@/components/primitives";
+
 export async function loginUser(email, password, csrfToken) {
-    const response = await fetch('http://localhost:8081/api/login', {
+    const response = await fetch(`${backendUrl}/api/login`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -12,7 +14,7 @@ export async function loginUser(email, password, csrfToken) {
 }
 
 export async function checkAuth() {
-    const response = await fetch('http://localhost:8081/api/verify-auth', {
+    const response = await fetch(`${backendUrl}/api/verify-auth`, {
         method: 'GET',
         credentials: 'include',
     });
@@ -26,7 +28,7 @@ export async function checkAuth() {
 
 //logout user
 export async function logoutUser() {
-    const response = await fetch('http://localhost:8081/api/logout', {
+    const response = await fetch(`${backendUrl}/api/logout`, {
         method: 'GET',
         credentials: 'include',
     });

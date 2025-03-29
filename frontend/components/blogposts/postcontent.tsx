@@ -5,6 +5,7 @@ import Footerpage from '../footer/footerpage';
 import { Poppins } from 'next/font/google';
 import { blogpostsInterface } from '@/app/(external)/(blog)/blogposts';
 import { blogInterface, BlogPost } from '@/utils/interfaces';
+import { backendUrl } from '../primitives';
 
 const poppins = Poppins({
     weight: "400",
@@ -31,12 +32,12 @@ export default function Postcontent(props: BlogPost) {
                 </div>
             </div>
             <div className="color-divider-right"></div>
-            <div className="main-section-post" style={{backgroundImage: `url(http://localhost:8081${props.image})`}}>
+            <div className="main-section-post" style={{backgroundImage: `url(${backendUrl}${props.image})`}}>
                 <div className={!isNightMode ? `bg-[#000000ed] py-4` : `bg-[#ffffffc9] py-4`}>
                     <div className={`lg:mx-20 md:mx-16 sm:mx-8 mx-2 px-2 py-4 ${poppins.className}`}>
                         <div>
                             <div>
-                                <img src={`http://localhost:8081${props.image}`} alt={props.title} className='post-image' />
+                                <img src={`${backendUrl}${props.image}`} alt={props.title} className='post-image' />
                                 <div dangerouslySetInnerHTML={{ __html: props.content }}></div>
                             </div>
 
